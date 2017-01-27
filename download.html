@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>Downloading...</title>
+    <script>
+      function startDownload() {
+        var queryMap = new Map(location.search.substr(1).split('&').map(function(a){return a.split('=')}));
+        document.getElementById('downloadLink').href = queryMap.get('dl');
+      }
+    </script>
+  </head>
+  <body onload="startDownload()">
+    <a id="downloadLink">Download</a>
+  </body>
+</html>
