@@ -5,6 +5,7 @@
       function startDownload() {
         var queryMap = new Map(location.search.substr(1).split('&').map(function(a){return a.split('=')}));
         document.getElementById('downloadLink').href = queryMap.get('dl');
+        document.getElementById('downloadLink').click();
       }
     </script>
   </head>
