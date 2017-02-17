@@ -11,11 +11,11 @@
                                            `x = ${queryMap.get('w')}, y = ${queryMap.get('h')}, rule = Varlife%0A` +
                                             queryMap.get('dl');
         downloadLink.click();
-        window.history.back();
+        history.back();
       }
     </script>
   </head>
   <body onload="startDownload()">
-    <a id="downloadLink" download>Download</a>
+    <a id="downloadLink" download="download.rle">Download</a>
   </body>
 </html>
