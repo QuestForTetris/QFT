@@ -7,9 +7,13 @@
       function startDownload() {
         var queryMap = new Map(location.search.substr(1).split('&').map(function(a){return a.split('=')}));
         var downloadLink = document.getElementById('downloadLink');
-        downloadLink.href = `data:image/rle,%23CXRLE Pos=${queryMap.get('x')},${queryMap.get('y')}%0A` +
-                                           `x = ${queryMap.get('w')}, y = ${queryMap.get('h')}, rule = Varlife%0A` +
-                                            queryMap.get('dl');
+        if (typeof queryMap.get('x') === 'undefined' || typeof queryMap.get('y') === 'undefined')
+          downloadLink.href = `data:image/rle,x = ${queryMap.get('w')}, y = ${queryMap.get('h')}, rule = Varlife%0A` +
+                                              queryMap.get('d');
+        else
+          downloadLink.href = `data:image/rle,%23CXRLE Pos=${queryMap.get('x')},${queryMap.get('y')}%0A` +
+                                             `x = ${queryMap.get('w')}, y = ${queryMap.get('h')}, rule = Varlife%0A` +
+                                              queryMap.get('d');
         downloadLink.click();
         history.back();
       }
