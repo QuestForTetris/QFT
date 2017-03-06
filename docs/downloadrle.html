@@ -7,6 +7,24 @@
       function startDownload() {
         var queryMap = new Map(location.search.substr(1).split('&').map(function(a){return a.split('=')}));
         var downloadLink = document.getElementById('downloadLink');
+        
+        var number = queryMap.get('d');
+        var dividend;
+        var output = '';
+        var digitsi = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGhijKLMNOPQRSTUVWXYZ-_';
+        var digitso = '0123456789.ABCDEFG$';
+        var i;
+        
+        while (number != digitsi[0].repeat(number.length)) {
+          dividend = 0;
+          for (i = 0; i < number.length; i++) {
+            dividend = dividend * digitsi.length + digitsi.indexof(number[i]);
+            number[i] = digitsi[dividend / digitso.length];
+            dividend = dividend % digitso.length;
+          }
+          output += digitso[dividend];
+        }
+        
         if (typeof queryMap.get('x') === 'undefined' || typeof queryMap.get('y') === 'undefined')
           downloadLink.href = `data:image/rle,x = ${queryMap.get('w')}, y = ${queryMap.get('h')}, rule = Varlife%0A` +
                                               queryMap.get('d');
