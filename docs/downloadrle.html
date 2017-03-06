@@ -23,7 +23,8 @@
             dividend = dividend % digitso.length;
           }
           output += digitso[dividend];
-        }
+          alert(number + ' ' + dividend);
+        } alert(output.split('').reverse().join(''));
         
         if (typeof queryMap.get('x') === 'undefined' || typeof queryMap.get('y') === 'undefined')
           downloadLink.href = `data:image/rle,x = ${queryMap.get('w')}, y = ${queryMap.get('h')}, rule = Varlife%0A` +
