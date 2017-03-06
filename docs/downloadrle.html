@@ -8,14 +8,14 @@
         var queryMap = new Map(location.search.substr(1).split('&').map(function(a){return a.split('=')}));
         var downloadLink = document.getElementById('downloadLink');
         
-        var number = queryMap.get('d');
+        var number = queryMap.get('d').split('');
         var dividend;
         var output = '';
         var digitsi = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGhijKLMNOPQRSTUVWXYZ-_';
         var digitso = '0123456789.ABCDEFG$';
         var i;
         
-        while (number != digitsi[0].repeat(number.length)) {
+        while (number != digitsi[0].repeat(number.length).split('')) {
           dividend = 0;
           for (i = 0; i < number.length; i++) {
             dividend = dividend * digitsi.length + digitsi.indexOf(number[i]);
@@ -23,7 +23,7 @@
             dividend = dividend % digitso.length;
           }
           output += digitso[dividend];
-          alert(number + ' ' + dividend);
+          alert(number.join('') + ' ' + dividend);
         } alert(output.split('').reverse().join(''));
         
         if (typeof queryMap.get('x') === 'undefined' || typeof queryMap.get('y') === 'undefined')
