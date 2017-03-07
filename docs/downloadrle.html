@@ -22,7 +22,7 @@
           for (i = 0; i < number.length; i++) {
             alert(number);
             dividend = dividend * digitsi.length + digitsi.indexOf(number[i]);
-            number[i] = digitsi[dividend / digitso.length];
+            number[i] = digitsi[Math.floor(dividend / digitso.length)];
             dividend = dividend % digitso.length;
           }
           output += digitso[dividend];
