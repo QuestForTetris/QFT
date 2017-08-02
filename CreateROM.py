@@ -33,7 +33,6 @@ for line in code.split("\n")[::-1]:
   instruction = line.split(";")[0].split(".")[1].split()
 #Parse each argument
   for argument in instruction[:0:-1]:
-    g.note(argument)
     if argument[0] in modes:
       bincode.append("{}{:016b}".format(modes[argument[0]], (1<<16)-1 & int(argument[1:], 0)))
     else:
