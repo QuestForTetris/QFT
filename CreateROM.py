@@ -23,7 +23,6 @@ opcodes = {"MNZ": "0000",
 modes = {"A": "01",
          "B": "10",
          "C": "11"}
-g.note(code)
 
 x = 0
 #Iterate through the instructions, backwards
