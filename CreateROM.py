@@ -23,6 +23,7 @@ opcodes = {"MNZ": "0000",
 modes = {"A": "01",
          "B": "10",
          "C": "11"}
+g.note(code)
 
 x = 0
 #Iterate through the instructions, backwards
@@ -33,10 +34,11 @@ for line in code.split("\n")[::-1]:
   instruction = line.split(";")[0].split(".")[1].split()
 #Parse each argument
   for argument in instruction[:0:-1]:
+    g.note(argument)
     if argument[0] in modes:
-      bincode.append("{}{:016b}".format(modes[argument[0]], (1<<16)-1 & int(argument[1:])))
+      bincode.append("{}{:016b}".format(modes[argument[0]], (1<<16)-1 & int(argument[1:], 0)))
     else:
-      bincode.append("00{:016b}".format((1<<16)-1 & int(argument)))
+      bincode.append("00{:016b}".format((1<<16)-1 & int(argument, 0)))
   bincode.append(opcodes[instruction[0]]) #Add opcode at end
 
 #Insert beginning clock generation line
