@@ -848,7 +848,7 @@ for j in xrange(selheight):
         g.fit()
         g.update()
     if varlife and j>0 and j%10==0:
-        # every 5 lines, flush the board to a compressed RLE file
+        # every 10 lines, flush the board to a compressed RLE file
         # otherwise all your memory will be gone
         g.save(g.getdir("app") + "{}.rle.gz".format(file_num), "rle.gz")
         g.new(layername)
