@@ -813,6 +813,7 @@ if not varlife:
 
 g.new(layername)
 g.setalgo("QuickLife")
+file_num = 1
 
 for j in xrange(selheight):
     for i in xrange(selwidth):
@@ -846,9 +847,11 @@ for j in xrange(selheight):
     if varlife and j>0 and j%5==0:
         # every 5 lines, flush the board to a compressed RLE file
         # otherwise all your memory will be gone
-        g.save(g.getdir("app") + "{}.rle.gz".format(j/5), "rle.gz")
+        g.save(g.getdir("app") + "{}.rle.gz".format(file_num), "rle.gz")
         g.new(layername)
+        file_num += 1
 
+g.save(g.getdir("app") + "{}.rle.gz".format(file_num), "rle.gz")
 g.show("")
 g.setalgo("HashLife")               # no point running a metapattern without hashing
 g.setoption("hyperspeed", False)    # avoid going too fast
