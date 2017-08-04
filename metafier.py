@@ -829,6 +829,9 @@ for j in xrange(selheight):
             
             # set the rule for the current metapixel
             Bvalues, Svalues, alive = varlife_rules[cell]
+            if len(Bvalues) == 0 and len(Svalues) == 0:
+                # Skip B/S cells since they don't matter
+                continue
             Brle = Srle = "b10$b10$b26$b10$b10$b26$b10$b10$b!"
             for ch in Bvalues:
                 ind = 32-int(ch)*4 # because B and S values are highest at the top!
@@ -844,7 +847,7 @@ for j in xrange(selheight):
             metacell.put(2048 * i - 5, 2048 * j - 5)
         g.fit()
         g.update()
-    if varlife and j>0 and j%5==0:
+    if varlife and j>0 and j%10==0:
         # every 5 lines, flush the board to a compressed RLE file
         # otherwise all your memory will be gone
         g.save(g.getdir("app") + "{}.rle.gz".format(file_num), "rle.gz")
