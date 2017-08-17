@@ -36,7 +36,7 @@ for line in code.split('\n')[::-1]:
     if argument[0] in modes:
       bincode.append('{}{:016b}'.format(modes[argument[0]], 65535 & int(argument[1:], 0)))
     else:
-      bincode.append('00{:016b}'.format((65535 & int(argument, 0)))
+      bincode.append('00{:016b}'.format(65535 & int(argument, 0)))
   bincode.append(opcodes[instruction[0]]) #Add opcode at end
 
 #Insert beginning clock generation line
